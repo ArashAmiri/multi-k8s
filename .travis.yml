@@ -6,7 +6,7 @@ before-install:
   - docker build -t shipster/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run shipster/react-test npm test -- --coverage
+  - docker run -e CI=true shipster/react-test npm test
 
 after_success:
   - docker build -t shipster/multi-client ./client
